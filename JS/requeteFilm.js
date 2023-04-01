@@ -1,10 +1,17 @@
-
+// Création d'une image du film
 export function genererFilm(film,localisationbalise){
-    const balise = document.createElement("img");
-    balise.src = film.image_url;
+    const baliseBouton = document.createElement("button")
+        baliseBouton.setAttribute("class","choixFilm")
+        baliseBouton.setAttribute("id",film.id)
+    const baliseimage = document.createElement("img");
+        baliseimage.src = film.image_url;
     const sectionFilm = document.querySelector("#"+localisationbalise)
-    sectionFilm.appendChild(balise)
+    sectionFilm.appendChild(baliseBouton)
+    baliseBouton.appendChild(baliseimage)
+
 }
+
+// Création du titre de categorie
 export function creationCategorie (genreChoisi, localisation){
     const nomCategorie = document.createElement("h3");
     nomCategorie.innerText = "Categorie "+localisation.charAt(localisation.length -1)+" : "+genreChoisi;
@@ -27,7 +34,7 @@ export async function miseEnFormeCategorie(genreChoisi,localisation){
     // concatenation des deux resultats JSON
     const reponseServeur = reponseServeurP1.concat(reponseServeurP2);
     // Affichage des 7 meilleurs films
-    for (let i=0; i<7; i++){
+    for (let i=0; i<3; i++){
         await genererFilm(reponseServeur[i],localisation)
 }
 }
