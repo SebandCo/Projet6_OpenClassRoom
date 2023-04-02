@@ -33,12 +33,3 @@ export function affichageCategorie(categorie){
     }
     
 }
-
-
-// Création d'une image du film
-export function genererFilm(film,localisationbalise){
-    const balise = document.createElement("img");
-    balise.src = film.image_url;
-    const sectionFilm = document.querySelector("#"+localisationbalise)
-    sectionFilm.appendChild(balise)
-}
