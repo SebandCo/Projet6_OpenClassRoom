@@ -1,3 +1,5 @@
+import { affichageFilm } from "./gestionFenetreModal.js";
+
 export function recuperationId(api) {
     const ensembleFilm = document.querySelectorAll(".listeFilm button");
     for (let i = 0; i < ensembleFilm.length; i++) {
@@ -14,18 +16,4 @@ export function recuperationId(api) {
         })
     };
          
-}
-
-export function affichageFilm(infoFilm){
-    const affichageFilm = document.createElement("p");
-    affichageFilm.innerText = infoFilm.description;
-    affichageFilm.setAttribute("id","resultatdufilm")
-    const titresection = document.querySelector("#titremodal")
-    titresection.innerHTML=""
-    titresection.innerText = "Description du Film"
-    const sectionFilm = document.querySelector("#contenumodal");
-    sectionFilm.innerHTML=""
-    sectionFilm.appendChild(affichageFilm);
-    const modalContainer = document.querySelector(".modal-container");
-    modalContainer.classList.toggle("active")
 }

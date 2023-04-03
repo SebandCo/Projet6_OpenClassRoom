@@ -17,27 +17,3 @@ export async function recuperationCategorie(api){
     return reponseTotalCategorie;
 }
 
-export function affichageCategorie(categorie){
-    var baliseform = document.createElement("form")
-        baliseform.setAttribute("method","get");
-        baliseform.setAttribute("action","");
-    
-    const titresection = document.querySelector("#titremodal")
-        titresection.innerHTML=""
-        titresection.innerText = "Choix de la categorie"
-    
-    const sectionFilm = document.querySelector("#contenumodal")
-    //remet à zero le texte
-    sectionFilm.innerHTML="";
-    sectionFilm.appendChild(baliseform)
-    for (let i = 0; i<categorie.length;i++){
-        var baliseinput = document.createElement("input");
-            baliseinput.setAttribute("type", "checkbox");
-            baliseinput.setAttribute("name", categorie[i].name);
-        var baliselabel = document.createElement("label")
-            baliselabel.innerText = categorie[i].name
-        baliseform.appendChild(baliselabel)
-        baliseform.appendChild(baliseinput)
-    }
-    
-}

@@ -1,5 +1,6 @@
 import {creationFilmCategorie, creationTitreCategorie} from "./creationCategorie.js";
-import {recuperationCategorie, affichageCategorie} from "./requeteCategorie.js";
+import {recuperationCategorie} from "./requeteCategorie.js";
+import {affichageCategorie } from "./gestionFenetreModal.js";
 
 const genre1 = "Action"
 const genre2 = "Romance"
@@ -37,5 +38,4 @@ async function toggleModal(){
     //Rajoute la classe toggle "active" si elle existe sinon ca l'enleve
     reponse = await recuperationCategorie(api);
     affichageCategorie(reponse)
-    modalContainer.classList.toggle("active")
 }
