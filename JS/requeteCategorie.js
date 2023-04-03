@@ -21,7 +21,12 @@ export function affichageCategorie(categorie){
     var baliseform = document.createElement("form")
         baliseform.setAttribute("method","get");
         baliseform.setAttribute("action","");
-    const sectionFilm = document.querySelector("#testcategorie")
+    
+    const titresection = document.querySelector("#titremodal")
+        titresection.innerHTML=""
+        titresection.innerText = "Choix de la categorie"
+    
+    const sectionFilm = document.querySelector("#contenumodal")
     //remet à zero le texte
     sectionFilm.innerHTML="";
     sectionFilm.appendChild(baliseform)
