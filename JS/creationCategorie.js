@@ -1,4 +1,4 @@
-import { recuperationId } from "./affichageFilm.js";
+import { recuperationId } from "./affichageInfoFilm.js";
 
 // Création d'une image du film
 export function genererFilm(film,localisationbalise){
@@ -24,7 +24,6 @@ export function creationTitreCategorie (genre1, genre2, genre3){
 }
 
 
-//export async function creationFilmCategorie(genreChoisi,localisation){
 export async function creationFilmCategorie(api, nbrFilmAffiche, genre1, genre2, genre3){   
     const genres=[genre1, genre2, genre3]
     // appel de l'API
@@ -46,4 +45,5 @@ export async function creationFilmCategorie(api, nbrFilmAffiche, genre1, genre2,
             await genererFilm(reponseServeur[j],("#categorie"+i))
         }
     }
+    recuperationId(api)
 }

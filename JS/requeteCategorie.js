@@ -1,18 +1,19 @@
-export async function recuperationCategorie(){
+export async function recuperationCategorie(api){
     let compteur=1
     let reponseTotalCategorie = [];
-    let reponsePartielleCategorie = await fetch("http://localhost:8000/api/v1/genres/?page=1");
+    let reponsePartielleCategorie = await fetch(api+'/genres/?page=1');
     do{
         reponsePartielleCategorie = await reponsePartielleCategorie.json();
         reponsePartielleCategorie = reponsePartielleCategorie.results;
         // Récupération des valeurs pour les mettre dans une seule variable
-        for (let i=0; i<5; i++){
+        for (let i=0; i<reponsePartielleCategorie.length; i++){
             reponseTotalCategorie.push(reponsePartielleCategorie[i]);
         }
 
         compteur ++;
-        reponsePartielleCategorie = await fetch("http://localhost:8000/api/v1/genres/?page="+compteur);
+        reponsePartielleCategorie = await fetch(api+'/genres/?page='+compteur);
     }while (reponsePartielleCategorie.status!=404);
+    
     return reponseTotalCategorie;
 }
 
@@ -21,6 +22,8 @@ export function affichageCategorie(categorie){
         baliseform.setAttribute("method","get");
         baliseform.setAttribute("action","");
     const sectionFilm = document.querySelector("#testcategorie")
+    //remet à zero le texte
+    sectionFilm.innerHTML="";
     sectionFilm.appendChild(baliseform)
     for (let i = 0; i<categorie.length;i++){
         var baliseinput = document.createElement("input");
