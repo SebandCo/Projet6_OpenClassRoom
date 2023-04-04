@@ -15,5 +15,6 @@ export async function recuperationCategorie(api){
     }while (reponsePartielleCategorie.status!=404);
     
     return reponseTotalCategorie;
+    
 }
 

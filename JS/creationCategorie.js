@@ -2,7 +2,7 @@ import { recuperationId } from "./affichageInfoFilm.js";
 
 
 // Création d'une image du film
-export function genererFilm(film,localisationbalise){
+function genererFilm(film,localisationbalise){
     const baliseBouton = document.createElement("button")
         baliseBouton.setAttribute("class","choixFilm")
     const baliseimage = document.createElement("img");
@@ -13,7 +13,7 @@ export function genererFilm(film,localisationbalise){
     baliseBouton.appendChild(baliseimage)
 }
 
-// Création du titre de categorie
+// Affichage du titre de chaque categorie
 export function creationTitreCategorie (genres){
     const sectionFilm = document.querySelector("#ensemblefilm")
     sectionFilm.innerHTML=""
@@ -30,35 +30,57 @@ export function creationTitreCategorie (genres){
             generalCategorie.appendChild(nomCategorie);
     }
 }
+//Fonction pour le déroulé de l'affichage des films les mieux notés
+export async function creationFilmMieuxNote(api,nbrFilmAffiche){
+    let rechercheAPI = "&sort_by=-imdb_score"
+    let categorie = ("#mieuxnote")
+    const reponseServeur = await requeteServeur(api, rechercheAPI, nbrFilmAffiche)
+    affichageFilm(categorie, nbrFilmAffiche, reponseServeur)
+    
+}
 
-
+//Fonction pour le déroulé de l'affichage des films par categorie
 export async function creationFilmCategorie(api, nbrFilmAffiche, genres){   
-    // appel de l'API
-    for (let i=0; i<genres.length;i++){
-        let reponseServeur=""
-        //Récupération de la page 1
-            // Page 1 par rapport au genre choisi et trié du meilleurs imdb au moins
-            let reponseServeurP1 = await fetch(api+'/titles/?page=1&genre='+genres[i]+'&sort_by=-imdb_score');
-            // Mise en Json de la réponse API
-            reponseServeurP1 = await reponseServeurP1.json();
-            // Récupération de la categorie results de la requete Json
-            reponseServeurP1 = reponseServeurP1.results
-        // Récupération de la Page 2 à condition qu'elle existe
-            let reponseServeurP2 = await fetch(api+'/titles/?page=2&genre='+genres[i]+'&sort_by=-imdb_score');
-            if (reponseServeurP2.status!="404"){
-                reponseServeurP2 = await reponseServeurP2.json();
-                reponseServeurP2 = reponseServeurP2.results
-                // concatenation des deux resultats JSON
-                reponseServeur = reponseServeurP1.concat(reponseServeurP2);
-            }
-            else{
-                reponseServeur = reponseServeurP1
-            }
-
-        // Affichage des nbrFilmAffiche meilleurs films
-        for (let j=0; j<nbrFilmAffiche && j<reponseServeur.length; j++){
-            await genererFilm(reponseServeur[j],("#categorie"+(i+1)))
-        }
+    
+    for (let i=0; i<genres.length;i++){ 
+        let rechercheAPI = "&genre="+genres[i]+"&sort_by=-imdb_score"
+        let categorie = ("#categorie"+(i+1))
+        const reponseServeur = await requeteServeur(api, rechercheAPI, nbrFilmAffiche)
+        affichageFilm(categorie, nbrFilmAffiche, reponseServeur)
     }
     recuperationId(api)
+}
+
+//Affichage de l'image du film (sous forme de bouton cliquable) par categorie
+async function affichageFilm(categorie, nbrFilmAffiche, reponseServeur){
+    for (let i=0; i<nbrFilmAffiche && i<reponseServeur.length; i++){
+        await genererFilm(reponseServeur[i],(categorie))
+    }
+}
+async function requeteServeur (api, rechercheAPI, nbrFilmAffiche){
+    let reponsePartielServeur = []
+    for (let j=0; j<=(nbrFilmAffiche/5);j++){
+        reponsePartielServeur[j] = await fetch (api+"/titles/?page="+(j+1)+rechercheAPI);
+        //Regarde si la page de l'API existe
+        if (reponsePartielServeur[j].status!="404"){
+            reponsePartielServeur[j] = await reponsePartielServeur[j].json();
+            reponsePartielServeur[j] = reponsePartielServeur[j].results
+        }
+        //Sinon quitte la boucle
+        else{
+            break
+        }
+    }
+    const reponseServeur = recuperationDonnees(reponsePartielServeur)
+    return reponseServeur
+}
+
+function recuperationDonnees(tableau){
+    let tableauModifie = []
+    for (let i=0; i<tableau.length;i++){
+        for (let j=0; j<tableau[i].length;j++){
+            tableauModifie.push (tableau[i][j])
+        }
+    }
+    return (tableauModifie)
 }

@@ -68,8 +68,8 @@ function affichageCategorie(categorie){
                 baliseinput.setAttribute("name", categorie[i].name);
             var baliselabel = document.createElement("label")
                 baliselabel.innerText = categorie[i].name
-            baliseACocher.appendChild(baliselabel)
             baliseACocher.appendChild(baliseinput)
+            baliseACocher.appendChild(baliselabel)
         }
         //Rajout de la baliseACocher à la liste des balises
         balises.push(baliseACocher)
