@@ -78,7 +78,6 @@ function miseEnFormeParagraphe(balises){
     const sectionFilm = document.querySelector("#contenumodal")
     sectionFilm.innerHTML="";
     for (let i=0;i<balises.length;i++){
-        console.log (balises[i])
         sectionFilm.appendChild(balises[i])
     }
 }

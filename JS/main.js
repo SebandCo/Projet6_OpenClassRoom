@@ -5,13 +5,14 @@ import {affichageCategorie } from "./gestionFenetreModal.js";
 const genre1 = "Action"
 const genre2 = "Romance"
 const genre3 = "Music"
+const genres = [genre1, genre2, genre3, "Sci-Fi"]
 const api = "http://localhost:8000/api/v1"
 // Ne pas dépasser 10 pour la constance nbrFilmAffiche
 const nbrFilmAffiche = 4
 
 //Mise en forme au démarrage des catégories
-creationTitreCategorie(genre1, genre2, genre3);
-creationFilmCategorie(api, nbrFilmAffiche, genre1, genre2, genre3)
+creationTitreCategorie(genres);
+creationFilmCategorie(api, nbrFilmAffiche, genres)
 
 // Choix de la categorie
 const boutoncategorie = document.querySelector(".choixcategorie");
