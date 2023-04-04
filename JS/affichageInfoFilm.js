@@ -1,4 +1,4 @@
-import { affichageFilm } from "./gestionFenetreModal.js";
+import { evenementModalFilm } from "./gestionFenetreModal.js";
 
 export function recuperationId(api) {
     const ensembleFilm = document.querySelectorAll(".listeFilm button");
@@ -12,7 +12,7 @@ export function recuperationId(api) {
             infoFilm = await infoFilm.json()
         
             //Affichage du résultat
-            affichageFilm(infoFilm)
+            evenementModalFilm(infoFilm)
         })
     };
          

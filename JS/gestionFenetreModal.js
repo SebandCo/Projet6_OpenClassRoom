@@ -1,4 +1,7 @@
-export function affichageFilm(infoFilm){
+import {recuperationCategorie} from "./requeteCategorie.js";
+import {creationFilmCategorie, creationTitreCategorie} from "./creationCategorie.js";
+
+export function evenementModalFilm(infoFilm){
     //Titre donné à la fenetre modal
     const texteTitre = "Description du Film"
     
@@ -22,7 +25,29 @@ export function affichageFilm(infoFilm){
     activationFenetre()
 }
 
-export function affichageCategorie(categorie){
+export async function evenementModalCategorie(api, nbrFilmAffiche){
+    //Récupération des categories de l'API
+    const categorie = await recuperationCategorie(api);
+    affichageCategorie(categorie)
+    //Activation de la Fenetre
+    activationFenetre()
+    //Evenement de lors de la validation
+    const modalValidationCategorie=document.querySelector("#validationCategorie")
+    modalValidationCategorie.addEventListener("click", function () {
+        //Pour récupérer les genres séléctionnés
+        let genres = []
+        //Récupére tous les checkbox
+        const rechercheBouton = document.querySelectorAll("input[type=checkbox]:checked")
+        //Parcours la liste pour vérifier qu'elle checkbox est valide
+        for (var checkbox of rechercheBouton) {  
+            genres.push(checkbox.name)
+        } 
+        creationTitreCategorie(genres);
+        creationFilmCategorie(api, nbrFilmAffiche, genres)
+        activationFenetre()
+    })
+}
+function affichageCategorie(categorie){
     //Titre donné à la fenetre modal
     const texteTitre = "Choix de la categorie"
     
@@ -51,6 +76,7 @@ export function affichageCategorie(categorie){
 
         //Création d'un bouton de validation
         var baliseValidation = document.createElement("button")
+            baliseValidation.setAttribute("id","validationCategorie")
             baliseValidation.innerText = "Valider"
         //Rajout de la baliseValidation à la liste des balises
         balises.push(baliseValidation)   
@@ -58,9 +84,6 @@ export function affichageCategorie(categorie){
     //Ajout des informations à la fenetre modal
     miseEnFormeTitre (texteTitre)
     miseEnFormeParagraphe (balises)
-
-    //Activation de la Fenetre
-    activationFenetre()
 }
 
 function activationFenetre(){

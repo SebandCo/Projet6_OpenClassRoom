@@ -1,6 +1,6 @@
 import {creationFilmCategorie, creationTitreCategorie} from "./creationCategorie.js";
 import {recuperationCategorie} from "./requeteCategorie.js";
-import {affichageCategorie } from "./gestionFenetreModal.js";
+import {evenementModalCategorie} from "./gestionFenetreModal.js";
 
 const genre1 = "Action"
 const genre2 = "Romance"
@@ -37,6 +37,6 @@ modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
 //Création de la fonction toggleModal
 async function toggleModal(){
     //Rajoute la classe toggle "active" si elle existe sinon ca l'enleve
-    reponse = await recuperationCategorie(api);
-    affichageCategorie(reponse)
+    evenementModalCategorie(api, nbrFilmAffiche)
 }
+

@@ -1,5 +1,6 @@
 import { recuperationId } from "./affichageInfoFilm.js";
 
+
 // Création d'une image du film
 export function genererFilm(film,localisationbalise){
     const baliseBouton = document.createElement("button")
@@ -14,7 +15,8 @@ export function genererFilm(film,localisationbalise){
 
 // Création du titre de categorie
 export function creationTitreCategorie (genres){
-    const sectionFilm = document.querySelector("#ensemblefilm") 
+    const sectionFilm = document.querySelector("#ensemblefilm")
+    sectionFilm.innerHTML=""
     for (let i=0; i<genres.length; i++){
         //Création d'un ensemble par categorie
         const generalCategorie = document.createElement ("section")
