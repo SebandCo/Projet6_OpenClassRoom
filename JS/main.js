@@ -1,18 +1,19 @@
 import {creationFilmCategorie, creationTitreCategorie, creationFilmMieuxNote} from "./creationCategorie.js";
 import {recuperationCategorie} from "./requeteCategorie.js";
-import {evenementModalCategorie} from "./gestionFenetreModal.js";
+import {evenementModalCategorie, activationFenetre} from "./gestionFenetreModal.js";
 
 const genre1 = "Action"
 const genre2 = "Romance"
 const genre3 = "Music"
 const genres = [genre1, genre2, genre3]
 const api = "http://localhost:8000/api/v1"
-const nbrFilmAffiche = 6
+const nbrFilmAffiche = 4
 
 //Mise en forme au démarrage des catégories
 creationFilmMieuxNote(api, nbrFilmAffiche)
 creationTitreCategorie(genres);
 creationFilmCategorie(api, nbrFilmAffiche, genres)
+
 
 // Choix de la categorie
 const boutoncategorie = document.querySelector(".choixcategorie");
@@ -37,6 +38,11 @@ modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
 //Création de la fonction toggleModal
 async function toggleModal(){
     //Rajoute la classe toggle "active" si elle existe sinon ca l'enleve
-    evenementModalCategorie(api, nbrFilmAffiche)
+    activationFenetre()
 }
+
+const modalCategorie = document.querySelector(".choix-categorie")
+    modalCategorie.addEventListener("click",function(){
+        evenementModalCategorie(api, nbrFilmAffiche)
+    })
 

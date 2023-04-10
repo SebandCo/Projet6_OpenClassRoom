@@ -1,5 +1,6 @@
 import {recuperationCategorie} from "./requeteCategorie.js";
 import {creationFilmCategorie, creationTitreCategorie} from "./creationCategorie.js";
+import {evenementCategorieGeneral} from "./evenementCategorie.js";
 
 export function evenementModalFilm(infoFilm){
     //Titre donné à la fenetre modal
@@ -44,9 +45,11 @@ export async function evenementModalCategorie(api, nbrFilmAffiche){
         } 
         creationTitreCategorie(genres);
         creationFilmCategorie(api, nbrFilmAffiche, genres)
+        evenementCategorieGeneral(api)
         activationFenetre()
     })
 }
+
 function affichageCategorie(categorie){
     //Titre donné à la fenetre modal
     const texteTitre = "Choix de la categorie"
@@ -86,7 +89,7 @@ function affichageCategorie(categorie){
     miseEnFormeParagraphe (balises)
 }
 
-function activationFenetre(){
+export function activationFenetre(){
     const modalContainer = document.querySelector(".modal-container");
     modalContainer.classList.toggle("active")
 }

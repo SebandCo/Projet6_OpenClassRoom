@@ -21,7 +21,7 @@ body {
 }
 
 /*mise en forme du bouton d'ouverture*/
-.modal-btn{
+.modal-btn, .choix-categorie{
     padding: 10px 14px;
     font-size : 18px;
     margin: 100px auto;
@@ -98,3 +98,9 @@ body {
     line-height: 1.4;
     margin-bottom: 5px;
 }
+
+.fleche{
+    height : 6em;
+    width : 6em;
+}
+

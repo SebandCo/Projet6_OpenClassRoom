@@ -1,16 +1,38 @@
-import { recuperationId } from "./affichageInfoFilm.js";
+import {evenementCategorieGeneral} from "./evenementCategorie.js";
 
+// Affichage de l'image du film (sous forme de bouton cliquable) par categorie
+async function affichageFilm(categorie, nbrFilmAffiche, reponseServeur){
+    genererFleche(categorie,"gauche")
+    for (let i=0; i<nbrFilmAffiche && i<reponseServeur.length; i++){
+        genererFilm(reponseServeur[i],(categorie),i+1)
+    }
+    genererFleche(categorie,"droite")
+}
 
 // Création d'une image du film
-function genererFilm(film,localisationbalise){
+function genererFilm(film,localisationBalise,position){
     const baliseBouton = document.createElement("button")
-        baliseBouton.setAttribute("class","choixFilm")
-    const baliseimage = document.createElement("img");
-        baliseimage.src = film.image_url;
-        baliseimage.setAttribute("id",film.id)
-    const sectionFilm = document.querySelector(localisationbalise)
+        baliseBouton.setAttribute("class","choixFilm film-"+position)
+        if (position<=3){
+            baliseBouton.style.display = "";
+        }
+        else{
+            baliseBouton.style.display = "none";
+        }
+    const baliseImage = document.createElement("img");
+        baliseImage.src = film.image_url;
+        baliseImage.setAttribute("id",film.id)
+    const sectionFilm = document.querySelector(localisationBalise)
     sectionFilm.appendChild(baliseBouton)
-    baliseBouton.appendChild(baliseimage)
+    baliseBouton.appendChild(baliseImage)
+}
+
+// Création des fleches droite/gauche
+function genererFleche (categorie,position){
+    const baliseFleche = document.createElement("button")
+        baliseFleche.setAttribute("class","fleche-"+position+" fleche"+" fleche-"+categorie.substring(1))
+    const sectionFilm = document.querySelector(categorie)
+    sectionFilm.appendChild(baliseFleche)
 }
 
 // Affichage du titre de chaque categorie
@@ -30,33 +52,27 @@ export function creationTitreCategorie (genres){
             generalCategorie.appendChild(nomCategorie);
     }
 }
-//Fonction pour le déroulé de l'affichage des films les mieux notés
+
+// Fonction pour le déroulé de l'affichage des films les mieux notés
 export async function creationFilmMieuxNote(api,nbrFilmAffiche){
-    let rechercheAPI = "&sort_by=-imdb_score"
-    let categorie = ("#mieuxnote")
+    const rechercheAPI = "&sort_by=-imdb_score"
+    const categorie = ("#mieuxnote")
     const reponseServeur = await requeteServeur(api, rechercheAPI, nbrFilmAffiche)
     affichageFilm(categorie, nbrFilmAffiche, reponseServeur)
-    
 }
 
-//Fonction pour le déroulé de l'affichage des films par categorie
+// Fonction pour le déroulé de l'affichage des films par categorie
 export async function creationFilmCategorie(api, nbrFilmAffiche, genres){   
-    
     for (let i=0; i<genres.length;i++){ 
-        let rechercheAPI = "&genre="+genres[i]+"&sort_by=-imdb_score"
-        let categorie = ("#categorie"+(i+1))
+        const rechercheAPI = "&genre="+genres[i]+"&sort_by=-imdb_score"
+        const categorie = ("#categorie"+(i+1))
         const reponseServeur = await requeteServeur(api, rechercheAPI, nbrFilmAffiche)
         affichageFilm(categorie, nbrFilmAffiche, reponseServeur)
     }
-    recuperationId(api)
+    evenementCategorieGeneral(api)
 }
 
-//Affichage de l'image du film (sous forme de bouton cliquable) par categorie
-async function affichageFilm(categorie, nbrFilmAffiche, reponseServeur){
-    for (let i=0; i<nbrFilmAffiche && i<reponseServeur.length; i++){
-        await genererFilm(reponseServeur[i],(categorie))
-    }
-}
+// Fonction pour récupérer les films de l'API
 async function requeteServeur (api, rechercheAPI, nbrFilmAffiche){
     let reponsePartielServeur = []
     for (let j=0; j<=(nbrFilmAffiche/5);j++){
@@ -75,6 +91,7 @@ async function requeteServeur (api, rechercheAPI, nbrFilmAffiche){
     return reponseServeur
 }
 
+// Fonction pour fusionner les tableaux en un seul
 function recuperationDonnees(tableau){
     let tableauModifie = []
     for (let i=0; i<tableau.length;i++){
