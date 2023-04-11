@@ -6,18 +6,97 @@ import {evenementCategorieGeneral} from "./evenementCategorie.js";
 export function evenementModalFilm(infoFilm){
     //Titre donné à la fenetre modal
     const texteTitre = "Description du Film"
-    
     //Contenu de la fenetre
         //Variable pour contenir les différentes balises
         let balises = []    
+        //Variable intermediaire pour la récupération des données
+        let informationTransitoire = ""
         
-        //Création de la balise paragraphe
-        const affichageFilm = document.createElement("p");
-        affichageFilm.innerText = infoFilm.description;
-        affichageFilm.setAttribute("id","resultatdufilm")
+        //Création de la balise image pochette
+            informationTransitoire = document.createElement("img");
+            informationTransitoire.src = infoFilm.image_url;
+            informationTransitoire.setAttribute("id","image-pochette")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
         
-        //Rajout de la affichageFilm à la liste des balises
-        balises.push(affichageFilm)
+        //Création de la balise titre du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.title;
+            informationTransitoire.setAttribute("id","titre")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+
+        //Création de la balise genre du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.genres;
+            informationTransitoire.setAttribute("id","genre")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+                
+        //Création de la balise date de sortie du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.date_published;
+            informationTransitoire.setAttribute("id","date-sortie")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+                        
+        //Création de la balise rang du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.rated;
+            informationTransitoire.setAttribute("id","rang")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+                    
+        //Création de la balise score Imdb du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.imdb_score;
+            informationTransitoire.setAttribute("id","imdb")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+                            
+        //Création de la balise réalisateur du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.directors;
+            informationTransitoire.setAttribute("id","realisateur")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+        
+        //Création de la balise liste acteur du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.actors;
+            informationTransitoire.setAttribute("id","liste-acteur")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)        
+        
+        //Création de la balise durée du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.duration;
+            informationTransitoire.setAttribute("id","duree")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)        
+        
+        //Création de la balise pays d'origine du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.countries;
+            informationTransitoire.setAttribute("id","pays-origine")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+        
+        //Création de la balise résultat box office du film
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.reviews_from_critics;
+            informationTransitoire.setAttribute("id","box-office")
+            //Rajout à la liste des balises
+            balises.push(informationTransitoire)
+        
+        //Création de la balise résumé
+            informationTransitoire = document.createElement("p");
+            informationTransitoire.innerText = infoFilm.description;
+            informationTransitoire.setAttribute("id","resume")
+            //Rajout de la affichageFilm à la liste des balises
+            balises.push(informationTransitoire)
+
+
 
     //Ajout des informations à la fenetre modal
     miseEnFormeTitre (texteTitre)
