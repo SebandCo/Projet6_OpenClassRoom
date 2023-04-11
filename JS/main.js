@@ -7,12 +7,13 @@ const genre2 = "Romance"
 const genre3 = "Music"
 const genres = [genre1, genre2, genre3]
 const api = "http://localhost:8000/api/v1"
+const nbrFilmStock = 5
 const nbrFilmAffiche = 4
 
 //Mise en forme au démarrage des catégories
-creationFilmMieuxNote(api, nbrFilmAffiche)
+creationFilmMieuxNote(api, nbrFilmStock, nbrFilmAffiche)
 creationTitreCategorie(genres);
-creationFilmCategorie(api, nbrFilmAffiche, genres)
+creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
 
 
 // Choix de la categorie
@@ -43,6 +44,6 @@ async function toggleModal(){
 
 const modalCategorie = document.querySelector(".choix-categorie")
     modalCategorie.addEventListener("click",function(){
-        evenementModalCategorie(api, nbrFilmAffiche)
+        evenementModalCategorie(api, nbrFilmStock)
     })
 

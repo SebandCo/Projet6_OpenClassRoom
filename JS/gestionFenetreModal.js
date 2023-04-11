@@ -26,7 +26,7 @@ export function evenementModalFilm(infoFilm){
     activationFenetre()
 }
 
-export async function evenementModalCategorie(api, nbrFilmAffiche){
+export async function evenementModalCategorie(api, nbrFilmStock){
     //Récupération des categories de l'API
     const categorie = await recuperationCategorie(api);
     affichageCategorie(categorie)
@@ -44,8 +44,8 @@ export async function evenementModalCategorie(api, nbrFilmAffiche){
             genres.push(checkbox.name)
         } 
         creationTitreCategorie(genres);
-        creationFilmCategorie(api, nbrFilmAffiche, genres)
-        evenementCategorieGeneral(api)
+        creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
+        evenementCategorieGeneral(api, nbrFilmAffiche)
         activationFenetre()
     })
 }
