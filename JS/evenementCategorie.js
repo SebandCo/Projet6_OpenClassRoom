@@ -41,13 +41,11 @@ function evenementFleche(nbrFilmAffiche){
 // Boucle pour changer l'affichage des films (flechedroite)
 function affichageFilm(classeActuel, sensFleche, nbrFilmAffiche){
     const listeFilmActuel = document.querySelectorAll("#"+classeActuel+" .choixFilm")
-    console.log(listeFilmActuel)
     if (sensFleche == "droite"){    
         for (let i = 0; i<listeFilmActuel.length; i++){
             // Recherche le premier film avec un attribut display none 
             // Recherche le premier film caché
             if (listeFilmActuel[i].style.display == ""){
-                console.log(i)
                 listeFilmActuel[i].style.display = "none"
                 listeFilmActuel[i+nbrFilmAffiche].style.display = ""
                 break
@@ -58,9 +56,7 @@ function affichageFilm(classeActuel, sensFleche, nbrFilmAffiche){
         for (let i = listeFilmActuel.length-1; i>=0; i--){    
         // Recherche le dernier film avec un attribut display vide
         // Recherche en partant de la fin du premier film visible
-        console.log (listeFilmActuel[i].style.display)
             if (listeFilmActuel[i].style.display == ""){
-                console.log (i)
                 listeFilmActuel[i].style.display = "none"
                 listeFilmActuel[i-nbrFilmAffiche].style.display = ""
                 break

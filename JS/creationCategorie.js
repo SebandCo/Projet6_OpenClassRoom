@@ -80,6 +80,14 @@ export function creationTitreCategorie (genres){
     }
 }
 
+// Fonction pour le film le mieux noté
+export async function creationMeilleurFilm(api){
+    const rechercheAPI = "&sort_by=-imdb_score"
+    const categorie = ("#meilleurfilm")
+    const reponseServeur = await requeteServeur(api, rechercheAPI, 1)
+    affichageFilm(categorie, 1, 1, reponseServeur)
+}
+
 // Fonction pour le déroulé de l'affichage des films les mieux notés
 export async function creationFilmMieuxNote(api,nbrFilmStock, nbrFilmAffiche){
     const rechercheAPI = "&sort_by=-imdb_score"

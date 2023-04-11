@@ -1,16 +1,21 @@
-import {creationFilmCategorie, creationTitreCategorie, creationFilmMieuxNote} from "./creationCategorie.js";
+import {creationFilmCategorie,
+        creationTitreCategorie,
+        creationFilmMieuxNote,
+        creationMeilleurFilm} from "./creationCategorie.js";
 import {recuperationCategorie} from "./requeteCategorie.js";
-import {evenementModalCategorie, activationFenetre} from "./gestionFenetreModal.js";
+import {evenementModalCategorie,
+        activationFenetre} from "./gestionFenetreModal.js";
 
 const genre1 = "Action"
 const genre2 = "Romance"
 const genre3 = "Music"
 const genres = [genre1, genre2, genre3]
 const api = "http://localhost:8000/api/v1"
-const nbrFilmStock = 5
+const nbrFilmStock = 10
 const nbrFilmAffiche = 4
 
 //Mise en forme au démarrage des catégories
+creationMeilleurFilm(api)
 creationFilmMieuxNote(api, nbrFilmStock, nbrFilmAffiche)
 creationTitreCategorie(genres);
 creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
