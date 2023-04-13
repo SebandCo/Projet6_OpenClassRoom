@@ -107,7 +107,7 @@ export function evenementModalFilm(infoFilm){
 }
 
 // Evenement lors de la validation de la fenetre modal sur les categories
-export async function evenementModalCategorie(api, nbrFilmStock){
+export async function evenementModalCategorie(api, nbrFilmStock,nbrFilmAffiche){
     //Récupération des categories de l'API
     const categorie = await recuperationCategorie(api);
     affichageCategorie(categorie)
@@ -145,13 +145,16 @@ function affichageCategorie(categorie){
         var baliseACocher = document.createElement("form")
             baliseACocher.setAttribute("method","get");
             baliseACocher.setAttribute("action","");
+            baliseACocher.setAttribute("id", "liste-categorie");
 
         //Récupération des valeurs à cocher
         for (let i = 0; i<categorie.length;i++){
             var baliseinput = document.createElement("input");
                 baliseinput.setAttribute("type", "checkbox");
                 baliseinput.setAttribute("name", categorie[i].name);
+                baliseinput.setAttribute("id", categorie[i].name);
             var baliselabel = document.createElement("label")
+                baliselabel.setAttribute("for",categorie[i].name)
                 baliselabel.innerText = categorie[i].name
             baliseACocher.appendChild(baliseinput)
             baliseACocher.appendChild(baliselabel)

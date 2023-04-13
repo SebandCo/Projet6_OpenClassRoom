@@ -1,7 +1,7 @@
-* {
-    text-align : center
-}
+@import "./utils/variable.scss";
+@import "./utils/mixin.scss";
 
-h1 {
-    color : blueviolet
-}
+@import "./base/contenu.scss";
+@import "./base/header.scss";
+@import "./base/navigation.scss";
+@import "./base/z-global.scss";

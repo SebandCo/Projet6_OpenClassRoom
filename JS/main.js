@@ -21,15 +21,6 @@ creationTitreCategorie(genres);
 creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
 
 
-// Choix de la categorie
-const boutoncategorie = document.querySelector(".choixcategorie");
-let reponse = []
-boutoncategorie.addEventListener("click", async function () {
-    reponse = await recuperationCategorie(api);
-    affichageCategorie(reponse)
-})
-
-
 //Pour la fenetre modal
 // Récupération du container
 const modalContainer = document.querySelector(".modal-container");
@@ -49,6 +40,6 @@ async function toggleModal(){
 
 const modalCategorie = document.querySelector(".choix-categorie")
     modalCategorie.addEventListener("click",function(){
-        evenementModalCategorie(api, nbrFilmStock)
+        evenementModalCategorie(api, nbrFilmStock, nbrFilmAffiche)
     })
 

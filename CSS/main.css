@@ -1,106 +1,140 @@
-* {
+@charset "UTF-8";
+main {
   text-align: center;
 }
 
+#logo-juststreamit {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 8em;
+  z-index: 2;
+}
+
+nav {
+  background: rgb(2, 135, 169);
+  height: 8em;
+  text-align: right;
+  width: 100%;
+  position: sticky;
+  top: 0%;
+  z-index: 1;
+}
+nav .bouton-navigation {
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  /*met une forme de main sur le pointer*/
+  cursor: pointer;
+}
+
 h1 {
-  color: blueviolet;
+  color: gray;
 }
 
 /*Pour la fenetre modal*/
 *,
 ::before,
 ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#liste-categorie {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
+  row-gap: 1em;
+}
+
+#Action input:checked {
+  border: 1px solid rgba(20, 190, 37, 0.653);
 }
 
 body {
-    font-family: sans-serif;
-    background: white;
+  font-family: sans-serif;
+  background: white;
 }
 
 /*mise en forme du bouton d'ouverture*/
-.modal-btn, .choix-categorie{
-    padding: 10px 14px;
-    font-size : 18px;
-    margin: 100px auto;
-    display: block;
-    min-width: 150px;
-    /*met une forme de main sur le pointer*/
-    cursor: pointer;
+.modal-btn {
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  /*met une forme de main sur le pointer*/
+  cursor: pointer;
 }
 
 /*mise en forme du container de modal*/
-    .modal-container{
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        /*caché de base*/
-        display: none;
-    }
-    /* affiché à l'activation*/
-    .modal-container.active{
-        display: block;
-    }
+.modal-container {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /*caché de base*/
+  display: none;
+}
+
+/* affiché à l'activation*/
+.modal-container.active {
+  display: block;
+}
 
 /*fond grisé*/
-.overlay{
-    position: absolute;
-    width : 100%;
-    height : 100%;
-    /*fond avec opacité*/
-    background: #333333d3;
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*fond avec opacité*/
+  background: rgba(51, 51, 51, 0.8274509804);
 }
 
 /*mise en forme du modal*/
-.modal{
-    width : 95%;
-    max-width: 500px;
-    min-width: 300px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 5px;
-    position : absolute;
-    /*permet de définir où la fenetre va apparaitre*/
-    top: 40%;
-    left : 50%;
-    /*permet de centrer en absolue*/
-    transform: translate(-50%, -50%);
+.modal {
+  width: 95%;
+  max-width: 600px;
+  min-width: 300px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  /*permet de définir où la fenetre va apparaitre*/
+  top: 40%;
+  left: 50%;
+  /*permet de centrer en absolue*/
+  transform: translate(-50%, -50%);
 }
 
 /*mise en forme du bouton de fermeture*/
-.close-modal{
-    padding: 8px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size:18px;
-    /*position absolute par rapport à son élement père*/
-    position : absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    background: #ff365e;
-    color: #fff;
+.close-modal {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  /*position absolute par rapport à son élement père*/
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: #ff365e;
+  color: #fff;
 }
 
 /*Mise en forme du titre*/
-.modal h1{
-    margin-bottom: 10px;
-    font-family: sans-serif;
-    font-weight: 500;
+.modal h1 {
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  font-weight: 500;
 }
 
 /*mise en forme du paragraphe*/
-.modal p{
-    /*permet d'avoir un paragraphe plus aéré*/
-    line-height: 1.4;
-    margin-bottom: 5px;
+.modal p {
+  /*permet d'avoir un paragraphe plus aéré*/
+  line-height: 1.4;
+  margin-bottom: 5px;
 }
 
-.fleche{
-    height : 6em;
-    width : 6em;
-}
-
+.fleche {
+  height: 6em;
+  width: 6em;
+}/*# sourceMappingURL=main.css.map */
