@@ -1,4 +1,4 @@
-@mixin bandeau_fixe{
-    position : sticky;
-    top : 0%;
+@mixin modification_curseur{
+    /*met une forme de main sur le pointer*/
+    cursor: pointer;
 }

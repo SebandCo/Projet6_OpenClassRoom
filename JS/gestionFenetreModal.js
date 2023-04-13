@@ -152,9 +152,10 @@ function affichageCategorie(categorie){
             var baliseinput = document.createElement("input");
                 baliseinput.setAttribute("type", "checkbox");
                 baliseinput.setAttribute("name", categorie[i].name);
-                baliseinput.setAttribute("id", categorie[i].name);
+                baliseinput.setAttribute("class", "checkbox-categorie")
             var baliselabel = document.createElement("label")
                 baliselabel.setAttribute("for",categorie[i].name)
+                baliselabel.setAttribute("class","checkbox-label")
                 baliselabel.innerText = categorie[i].name
             baliseACocher.appendChild(baliseinput)
             baliseACocher.appendChild(baliselabel)
@@ -173,6 +174,7 @@ function affichageCategorie(categorie){
     miseEnFormeTitre (texteTitre)
     miseEnFormeParagraphe (balises)
 }
+
 
 // Fonction pour afficher ou cacher la fenetre modal
 export function activationFenetre(){
