@@ -1,9 +1,11 @@
-#liste-categorie{
-    display : grid;
-    grid-template-columns : 1fr 2fr 1fr 2fr 1fr 2fr;
-    row-gap : 1em;
-}
+.modal{
+    #liste-categorie{
+        display : grid;
+        grid-template-columns : 1fr 2fr 1fr 2fr 1fr 2fr;
+        row-gap : 1em;
+    }
 
-.checkbox-categorie:checked + .checkbox-label{
-    font-weight: bold;
-  }
+    .checkbox-categorie:checked + .checkbox-label{
+        font-weight: bold;
+    }
+}

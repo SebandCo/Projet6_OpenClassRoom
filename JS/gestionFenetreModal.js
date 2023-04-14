@@ -11,92 +11,53 @@ export function evenementModalFilm(infoFilm){
         let balises = []    
         //Variable intermediaire pour la récupération des données
         let informationTransitoire = ""
-        
-        //Création de la balise image pochette
-            informationTransitoire = document.createElement("img");
-            informationTransitoire.src = infoFilm.image_url;
-            informationTransitoire.setAttribute("id","image-pochette")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-        
-        //Création de la balise titre du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.title;
-            informationTransitoire.setAttribute("id","titre")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
+        // valeur_balise = type_de_balise, lien_de_l'information, id de l'information, titre H4
+        let valeur_balise = []
+        let valeur_globale = []
+        let valeur_provisoire = []
+        // Création de la balise image pochette
+        insertionGlobale(valeur_globale,"img", infoFilm.image_url,"image-pochette","Image Pochette" )            
 
-        //Création de la balise genre du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.genres;
-            informationTransitoire.setAttribute("id","genre")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-                
+        // Création de la balise titre du film
+        insertionGlobale(valeur_globale,"p", infoFilm.title,"titre","Titre")
+
+        // Création de la balise genre du film
+        insertionGlobale(valeur_globale,"p", infoFilm.genres,"genre","Genre")
+
         //Création de la balise date de sortie du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.date_published;
-            informationTransitoire.setAttribute("id","date-sortie")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-                        
-        //Création de la balise rang du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.rated;
-            informationTransitoire.setAttribute("id","rang")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
+        insertionGlobale(valeur_globale,"p", infoFilm.date_published, "date-sortie", "Sortie le")
                     
+        //Création de la balise rang du film
+        insertionGlobale(valeur_globale,"p", infoFilm.rated, "rang", "Rang de sortie")
+
         //Création de la balise score Imdb du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.imdb_score;
-            informationTransitoire.setAttribute("id","imdb")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-                            
+        insertionGlobale(valeur_globale,"p", infoFilm.imdb_score,"imdb", "Score imdb")
+                        
         //Création de la balise réalisateur du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.directors;
-            informationTransitoire.setAttribute("id","realisateur")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-        
+        insertionGlobale(valeur_globale,"p", infoFilm.directors, "realisateur", "Réalisé par")
+
         //Création de la balise liste acteur du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.actors;
-            informationTransitoire.setAttribute("id","liste-acteur")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)        
-        
+        insertionGlobale(valeur_globale,"p", infoFilm.actors,"liste-acteur", "Liste des acteurs")    
+
         //Création de la balise durée du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.duration;
-            informationTransitoire.setAttribute("id","duree")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)        
-        
+        insertionGlobale(valeur_globale,"p", infoFilm.duration,"duree","Durée")       
+
         //Création de la balise pays d'origine du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.countries;
-            informationTransitoire.setAttribute("id","pays-origine")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-        
+        insertionGlobale(valeur_globale,"p", infoFilm.countries, "pays-origine", "Pays d'origine")
+
         //Création de la balise résultat box office du film
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.reviews_from_critics;
-            informationTransitoire.setAttribute("id","box-office")
-            //Rajout à la liste des balises
-            balises.push(informationTransitoire)
-        
+        insertionGlobale(valeur_globale,"p", infoFilm.reviews_from_critics,"box-office", "Résultat au Box Office")
+
         //Création de la balise résumé
-            informationTransitoire = document.createElement("p");
-            informationTransitoire.innerText = infoFilm.description;
-            informationTransitoire.setAttribute("id","resume")
-            //Rajout de la affichageFilm à la liste des balises
-            balises.push(informationTransitoire)
+        insertionGlobale(valeur_globale,"p", infoFilm.description, "resume", "Résumé")
 
-
+        //Intégration de toute les balises dans la balises générale
+            for (let i=0; i<valeur_globale.length;i++){
+                valeur_provisoire = creationTexte(valeur_globale[i])
+                balises.push(valeur_provisoire[0])
+                balises.push(valeur_provisoire[1])
+                
+            }
 
     //Ajout des informations à la fenetre modal
     miseEnFormeTitre (texteTitre,"film")
@@ -129,6 +90,27 @@ export async function evenementModalCategorie(api, nbrFilmStock,nbrFilmAffiche){
         evenementCategorieGeneral(api, nbrFilmAffiche)
         activationFenetre()
     })
+}
+
+// fonction pour créer les balises
+function creationTexte(valeur){
+    let informationTransitoire = document.createElement(valeur[0]);
+        if (valeur[0]=="img"){
+            informationTransitoire.src = valeur[1];
+        }
+        else{
+            informationTransitoire.innerText = valeur[1];
+        }
+            informationTransitoire.setAttribute("id",valeur[2])
+    let titreTransitoire = document.createElement("h4")
+        titreTransitoire.innerText = valeur[3]
+    return [titreTransitoire, informationTransitoire]
+}
+
+// fonction pour regrouper les valeurs dans un même tableau
+function insertionGlobale (tableau, valeur1, valeur2, valeur3, valeur4){
+    let tableauProvisoire = [valeur1, valeur2, valeur3, valeur4 ]
+    tableau.push(tableauProvisoire)
 }
 
 // Fonction pour l'affichage des categories

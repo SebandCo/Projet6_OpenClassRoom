@@ -98,14 +98,18 @@ nav .bouton-navigation {
   cursor: pointer;
 }
 
-#liste-categorie {
+.modal #liste-categorie {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
   row-gap: 1em;
 }
-
-.checkbox-categorie:checked + .checkbox-label {
+.modal .checkbox-categorie:checked + .checkbox-label {
   font-weight: bold;
+}
+
+.modal .contenu-film {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*Pour la fenetre modal*/
