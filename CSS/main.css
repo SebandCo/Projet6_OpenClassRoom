@@ -7,26 +7,71 @@ main {
   font-size: 4em;
 }
 #meilleurfilm .choixFilm {
-  padding: 100px;
-  margin: 100px;
-  width: 1000px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
   /*met une forme de main sur le pointer*/
   cursor: pointer;
+}
+#meilleurfilm img {
+  height: 35em;
 }
 
 #mieuxnote {
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 2em auto;
+  grid-template-columns: 10% 80% 10%;
 }
 #mieuxnote h3 {
-  grid-row: 1/2;
+  grid-row: 1;
+  grid-column: 1/4;
 }
 #mieuxnote .fleche-gauche {
-  grid-row: 2/3;
-  grid-column: 1/2;
+  grid-row: 2;
+  grid-column: 1;
 }
 #mieuxnote div {
-  grid-row: 2/3;
+  grid-row: 2;
+  grid-column: 2;
+}
+#mieuxnote .fleche-droite {
+  grid-row: 2;
+  grid-column: 3;
+}
+#mieuxnote img {
+  height: 23em;
+}
+
+#ensemblefilm .listeFilm {
+  display: grid;
+  grid-template-rows: 2em auto;
+  grid-template-columns: 10% 80% 10%;
+}
+#ensemblefilm .listeFilm h3 {
+  grid-row: 1;
+  grid-column: 1/4;
+}
+#ensemblefilm .listeFilm .fleche-gauche {
+  grid-row: 2;
+  grid-column: 1;
+}
+#ensemblefilm .listeFilm div {
+  grid-row: 2;
+  grid-column: 2;
+}
+#ensemblefilm .listeFilm .fleche-droite {
+  grid-row: 2;
+  grid-column: 3;
+}
+#ensemblefilm .listeFilm img {
+  height: 23em;
+}
+
+.fleche {
+  height: 20em;
+  width: 4em;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 #logo-juststreamit {
@@ -41,7 +86,6 @@ nav {
   background: rgb(2, 135, 169);
   height: 8em;
   text-align: right;
-  width: 100%;
   position: sticky;
   top: 0%;
   z-index: 1;
@@ -133,10 +177,6 @@ h1 {
   color: gray;
 }
 
-#Action input:checked {
-  border: 1px solid rgba(20, 190, 37, 0.653);
-}
-
 body {
   font-family: sans-serif;
   background: white;
@@ -154,9 +194,4 @@ body {
   /*permet d'avoir un paragraphe plus aéré*/
   line-height: 1.4;
   margin-bottom: 5px;
-}
-
-.fleche {
-  height: 6em;
-  width: 6em;
 }/*# sourceMappingURL=main.css.map */

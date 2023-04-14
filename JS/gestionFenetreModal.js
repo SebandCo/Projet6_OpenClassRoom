@@ -99,8 +99,8 @@ export function evenementModalFilm(infoFilm){
 
 
     //Ajout des informations à la fenetre modal
-    miseEnFormeTitre (texteTitre)
-    miseEnFormeParagraphe (balises)
+    miseEnFormeTitre (texteTitre,"film")
+    miseEnFormeParagraphe (balises,"film")
 
     //Activation de la Fenetre
     activationFenetre()
@@ -171,8 +171,8 @@ function affichageCategorie(categorie){
         balises.push(baliseValidation)   
     
     //Ajout des informations à la fenetre modal
-    miseEnFormeTitre (texteTitre)
-    miseEnFormeParagraphe (balises)
+    miseEnFormeTitre (texteTitre,"categorie")
+    miseEnFormeParagraphe (balises,"categorie")
 }
 
 
@@ -183,16 +183,18 @@ export function activationFenetre(){
 }
 
 // Mise en forme du titre de la fenetre modal
-function miseEnFormeTitre (texteTitre){
+function miseEnFormeTitre (texteTitre,localisation){
     const titresection = document.querySelector("#titremodal")
     titresection.innerHTML = ""
+    titresection.setAttribute("class", "titre-"+localisation)
     titresection.innerText = texteTitre
 }
 
 // Mise en forme du contenu de la fenetre modal
-function miseEnFormeParagraphe(balises){
+function miseEnFormeParagraphe(balises, localisation){
     const sectionFilm = document.querySelector("#contenumodal")
     sectionFilm.innerHTML="";
+    sectionFilm.setAttribute("class", "contenu-"+localisation)
     for (let i=0;i<balises.length;i++){
         sectionFilm.appendChild(balises[i])
     }

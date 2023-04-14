@@ -2,3 +2,31 @@
     /*met une forme de main sur le pointer*/
     cursor: pointer;
 }
+
+@mixin taille_film($hauteur:$hauteurfilm){
+    img{
+        height: $hauteur;
+    }
+}
+
+@mixin affichage_film_displaygrid{
+    display : grid;
+    grid-template-rows: 2em auto;
+    grid-template-columns: 10% 80% 10%;
+    h3{
+        grid-row: 1;
+        grid-column: 1/4;
+    }
+    .fleche-gauche{
+        grid-row: 2;
+        grid-column: 1;
+    }
+    div{
+        grid-row : 2;
+        grid-column: 2;
+    }
+    .fleche-droite{
+        grid-row : 2;
+        grid-column : 3;
+    }
+}

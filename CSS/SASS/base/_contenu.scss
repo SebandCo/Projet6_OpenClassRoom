@@ -8,25 +8,30 @@ main{
     }
 
     .choixFilm{
-        padding: 100px;
-        margin: 100px;
-        width : 1000px;
+        margin-top: 20px;
+        margin-bottom : 20px;
+        width : 100%;
         @include modification_curseur
     }
+
+    @include taille_film($hauteurmeilleurfilm);
 }
 
 #mieuxnote{
-    display : grid;
-    grid-template-rows: 1fr 3fr;
-    h3{
-        grid-row: 1/2;
-    }
-    .fleche-gauche{
-        grid-row: 2/3;
-        grid-column: 1/2;
-    }
-    div{
-        grid-row : 2/3;
-    }
+    @include affichage_film_displaygrid;
+    @include taille_film;
+}
 
+#ensemblefilm{
+    .listeFilm{
+        @include affichage_film_displaygrid;
+        @include taille_film;
+    }
+}
+
+.fleche{
+    height : ($hauteurfleche);
+    width : 4em;
+    font-size: 1em;
+    font-weight: bold;
 }

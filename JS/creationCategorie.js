@@ -5,7 +5,7 @@ async function affichageFilm(categorie, nbrFilmStock, nbrFilmAffiche, reponseSer
     
     genererFleche(categorie,"gauche")
     const baliseDiv = document.createElement("div")
-        baliseDiv.setAttribute("class", "div-film-"+categorie)
+        baliseDiv.setAttribute("class", "div-film-"+categorie.substring(1))
     for (let i=0; i<nbrFilmStock && i<reponseServeur.length; i++){
         genererFilm(reponseServeur[i],(categorie),i+1, nbrFilmAffiche, baliseDiv)
     }
@@ -36,6 +36,12 @@ function genererFilm(film,localisationBalise,position,nbrFilmAffiche,baliseDiv){
 function genererFleche (categorie,position){
     const baliseFleche = document.createElement("button")
         baliseFleche.setAttribute("class","fleche-"+position+" fleche"+" fleche-"+categorie.substring(1))
+        if (position == "droite"){
+            baliseFleche.innerText = ">"
+        }
+        else{
+            baliseFleche.innerText = "<"
+        }
     const sectionFilm = document.querySelector(categorie)
     sectionFilm.appendChild(baliseFleche)
 }
