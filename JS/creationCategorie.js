@@ -2,18 +2,22 @@ import {evenementCategorieGeneral} from "./evenementCategorie.js";
 
 // Affichage de l'image du film (sous forme de bouton cliquable) par categorie
 async function affichageFilm(categorie, nbrFilmStock, nbrFilmAffiche, reponseServeur){
+    
     genererFleche(categorie,"gauche")
+    const baliseDiv = document.createElement("div")
+        baliseDiv.setAttribute("class", "div-film-"+categorie)
     for (let i=0; i<nbrFilmStock && i<reponseServeur.length; i++){
-        genererFilm(reponseServeur[i],(categorie),i+1, nbrFilmAffiche)
+        genererFilm(reponseServeur[i],(categorie),i+1, nbrFilmAffiche, baliseDiv)
     }
     genererFleche(categorie,"droite")
     affichageFleche(categorie)
 }
 
 // Création d'une image du film
-function genererFilm(film,localisationBalise,position, nbrFilmAffiche){
+function genererFilm(film,localisationBalise,position,nbrFilmAffiche,baliseDiv){
     const baliseBouton = document.createElement("button")
         baliseBouton.setAttribute("class","choixFilm film-"+position)
+        baliseBouton.setAttribute("id", film.id)
         if (position<=nbrFilmAffiche){
             baliseBouton.style.display = "";
         }
@@ -22,9 +26,9 @@ function genererFilm(film,localisationBalise,position, nbrFilmAffiche){
         }
     const baliseImage = document.createElement("img");
         baliseImage.src = film.image_url;
-        baliseImage.setAttribute("id",film.id)
     const sectionFilm = document.querySelector(localisationBalise)
-    sectionFilm.appendChild(baliseBouton)
+    sectionFilm.appendChild(baliseDiv)
+    baliseDiv.appendChild(baliseBouton)
     baliseBouton.appendChild(baliseImage)
 }
 

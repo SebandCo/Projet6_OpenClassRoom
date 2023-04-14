@@ -1,3 +1,32 @@
 main{
     text-align: center;
 }
+
+#meilleurfilm{
+    h2{
+        font-size: 4em;
+    }
+
+    .choixFilm{
+        padding: 100px;
+        margin: 100px;
+        width : 1000px;
+        @include modification_curseur
+    }
+}
+
+#mieuxnote{
+    display : grid;
+    grid-template-rows: 1fr 3fr;
+    h3{
+        grid-row: 1/2;
+    }
+    .fleche-gauche{
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+    div{
+        grid-row : 2/3;
+    }
+
+}

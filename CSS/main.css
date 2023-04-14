@@ -3,6 +3,32 @@ main {
   text-align: center;
 }
 
+#meilleurfilm h2 {
+  font-size: 4em;
+}
+#meilleurfilm .choixFilm {
+  padding: 100px;
+  margin: 100px;
+  width: 1000px;
+  /*met une forme de main sur le pointer*/
+  cursor: pointer;
+}
+
+#mieuxnote {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+#mieuxnote h3 {
+  grid-row: 1/2;
+}
+#mieuxnote .fleche-gauche {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+#mieuxnote div {
+  grid-row: 2/3;
+}
+
 #logo-juststreamit {
   position: fixed;
   top: 0px;

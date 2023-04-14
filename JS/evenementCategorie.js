@@ -8,11 +8,17 @@ export async function evenementCategorieGeneral(api, nbrFilmAffiche){
 
 async function evenementFilm(api) {
     const ensembleFilm = document.querySelectorAll(".listeFilm .choixFilm");
+    console.log(ensembleFilm)
     for (let i = 0; i < ensembleFilm.length; i++) {
         //Récupération de l'id
         ensembleFilm[i].addEventListener("click", async function (event) {
-            const id = event.target.id;
-            
+            let id = event.target.id;
+            console.log (id)
+            // Correction d'un bug quand l'image est plus petite que le bouton
+            if (id==""){
+                id = event.target.parentElement.id;
+            }
+
             //Requete auprès de l'API
             let infoFilm = await fetch(api+'/titles/'+id);
             infoFilm = await infoFilm.json()
