@@ -1,6 +1,7 @@
 @charset "UTF-8";
 main {
   text-align: center;
+  background: rgb(81, 185, 255);
 }
 
 #meilleurfilm h2 {
@@ -109,7 +110,41 @@ nav .bouton-navigation {
 
 .modal .contenu-film {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #666;
+}
+.modal .contenu-film h4 {
+  grid-column: 2;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #fff;
+  border: 1px solid #666;
+}
+.modal .contenu-film p {
+  grid-column: 3;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #fff;
+  border: 1px solid #666;
+}
+.modal .contenu-film .image-pochette {
+  grid-column: 1;
+  background-color: #fff;
+  border: 1px solid #666;
+}
+.modal .contenu-film h4[class=image-pochette] {
+  grid-row: 1;
+}
+.modal .contenu-film img[class=image-pochette] {
+  grid-row: 2/10;
+  position: relative;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
 }
 
 /*Pour la fenetre modal*/
@@ -149,7 +184,7 @@ nav .bouton-navigation {
 /*mise en forme du modal*/
 .modal {
   width: 95%;
-  max-width: 600px;
+  max-width: 800px;
   min-width: 300px;
   padding: 30px;
   background: #fff;

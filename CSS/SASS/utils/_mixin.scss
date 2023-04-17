@@ -9,6 +9,17 @@
     }
 }
 
+@mixin centrage_texte{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+@mixin bordure_modal{
+    background-color: #fff;
+    border: 1px solid #666;
+}
+
 @mixin affichage_film_displaygrid{
     display : grid;
     grid-template-rows: 2em auto;

@@ -8,11 +8,8 @@ export function evenementModalFilm(infoFilm){
     const texteTitre = "Description du Film"
     //Contenu de la fenetre
         //Variable pour contenir les différentes balises
-        let balises = []    
-        //Variable intermediaire pour la récupération des données
-        let informationTransitoire = ""
+        let balises = []
         // valeur_balise = type_de_balise, lien_de_l'information, id de l'information, titre H4
-        let valeur_balise = []
         let valeur_globale = []
         let valeur_provisoire = []
         // Création de la balise image pochette
@@ -55,8 +52,7 @@ export function evenementModalFilm(infoFilm){
             for (let i=0; i<valeur_globale.length;i++){
                 valeur_provisoire = creationTexte(valeur_globale[i])
                 balises.push(valeur_provisoire[0])
-                balises.push(valeur_provisoire[1])
-                
+                balises.push(valeur_provisoire[1])   
             }
 
     //Ajout des informations à la fenetre modal
@@ -94,6 +90,11 @@ export async function evenementModalCategorie(api, nbrFilmStock,nbrFilmAffiche){
 
 // fonction pour créer les balises
 function creationTexte(valeur){
+    // balise h4
+    let titreTransitoire = document.createElement("h4")
+        titreTransitoire.setAttribute("class",valeur[2])
+        titreTransitoire.innerText = valeur[3]
+    // balise avec l'information sur le film
     let informationTransitoire = document.createElement(valeur[0]);
         if (valeur[0]=="img"){
             informationTransitoire.src = valeur[1];
@@ -101,9 +102,7 @@ function creationTexte(valeur){
         else{
             informationTransitoire.innerText = valeur[1];
         }
-            informationTransitoire.setAttribute("id",valeur[2])
-    let titreTransitoire = document.createElement("h4")
-        titreTransitoire.innerText = valeur[3]
+            informationTransitoire.setAttribute("class",valeur[2])
     return [titreTransitoire, informationTransitoire]
 }
 

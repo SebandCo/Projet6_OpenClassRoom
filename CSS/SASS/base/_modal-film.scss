@@ -1,6 +1,33 @@
 .modal{
     .contenu-film{
         display:grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: auto;
+        @include bordure_modal;
+        h4{
+            grid-column: 2;
+            @include centrage_texte;
+            @include bordure_modal;
+        }
+        p{
+            grid-column : 3;
+            @include centrage_texte;
+            @include bordure_modal;
+        }
+        .image-pochette{
+            grid-column : 1;
+            @include bordure_modal;
+        }
+        h4[class="image-pochette"]{
+                grid-row: 1;
+            }
+        img[class="image-pochette"]{
+                grid-row: 2/10;    
+                position: relative;
+                left: 50%;
+                top: 60%;
+                transform: translate(-50%, -50%);
+            }
+        
     }
 }

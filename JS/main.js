@@ -12,7 +12,7 @@ const genre3 = "Music"
 const genres = [genre1, genre2, genre3]
 const api = "http://localhost:8000/api/v1"
 const nbrFilmStock = 10
-const nbrFilmAffiche = 5
+const nbrFilmAffiche = 4
 
 //Mise en forme au démarrage des catégories
 creationMeilleurFilm(api)
