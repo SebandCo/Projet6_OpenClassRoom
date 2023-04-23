@@ -7,20 +7,24 @@
     padding: 0;
 }
 
-  /*mise en forme du container de modal*/
-  .modal-container{
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-        /*caché de base*/
-    display: none;
+
+/*mise en forme du container de modal*/
+.modal-container{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /*caché de base*/
+  display: none;
 }
+
+
 /* affiché à l'activation*/
 .modal-container.active{
     display: block;
     z-index: 3;
 }
+
 
 /*fond grisé*/
 .overlay{
@@ -31,33 +35,53 @@ height : 100%;
 background: #333333d3;
 }
 
-  /*mise en forme du modal*/
-  .modal{
-    width : 95%;
-    max-width: 800px;
-    min-width: 300px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 5px;
-    position : absolute;
-    /*permet de définir où la fenetre va apparaitre*/
-    top: 40%;
-    left : 50%;
-    /*permet de centrer en absolue*/
-    transform: translate(-50%, -50%);
+
+/*mise en forme du modal*/
+.modal{
+  width : auto;
+  max-width: 1000px;
+  min-width: 300px;
+  padding: 30px;
+  background: $couleurfondmodal;
+  border-radius: 5px;
+  position : absolute;
+  /*permet de définir où la fenetre va apparaitre*/
+  top: 50%;
+  left : 50%;
+  /*permet de centrer en absolue*/
+  transform: translate(-50%, -50%);
+  h1{
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-weight: 500;
+  }
+  #contenumodal{
+    color : $couleurecrituremodal;
+    p{
+      /*permet d'avoir un paragraphe plus aéré*/
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+  }
 }
 
-  /*mise en forme du bouton de fermeture*/
-  .close-modal{
-    padding: 8px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size:18px;
-    /*position absolute par rapport à son élement père*/
-    position : absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    background: #ff365e;
-    color: #fff;
+
+/*mise en forme du bouton de fermeture*/
+.close-modal{
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size:18px;
+  /*position absolute par rapport à son élement père*/
+  position : absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: #ff365e;
+  color: #fff;
+}
+
+
+#validationCategorie{
+  @include bouton;
 }

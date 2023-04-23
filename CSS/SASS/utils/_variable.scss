@@ -1,8 +1,17 @@
 $couleurbaniere : rgb(2, 135, 169);
-$couleurmodal:rgb(2, 135, 169);
-$couleurfond : rgb(81, 185, 255);
+$couleurfondmodal:rgb(2, 135, 169);
+$couleurfondtextemodal:rgb(2, 135, 169);
+$couleurfond : rgba(0, 0, 0, 0.6);
+$couleurfilmmoment : rgb(255, 157, 0);
+$couleurecriture : white;
+$couleurecrituremodal : black;
+$couleurboutonnav:rgb(6, 123, 152);
 
 $hauteurbaniere : 8em;
 $hauteurfilm : 23em;
 $hauteurmeilleurfilm : $hauteurfilm + 12em;
-$hauteurfleche : $hauteurfilm - 3em;
+$hauteurfleche : 100px;
+
+$tailletitre : 2em;
+$taillemeilleurfilm : 4em;
+$textemeilleurfilm : 2em;

@@ -1,36 +1,38 @@
 import {evenementModalFilm} from "./gestionFenetreModal.js";
 import {affichageFleche} from "./creationCategorie.js";
 
-export async function evenementCategorieGeneral(api, nbrFilmAffiche){
-    evenementFilm(api)
+// Appel des autres fonction
+export async function evenementCategorieGeneral(API, nbrFilmAffiche){
+    evenementFilm(API)
     evenementFleche(nbrFilmAffiche)
 }
 
-async function evenementFilm(api) {
-    const ensembleFilm = document.querySelectorAll(".listeFilm .choixFilm");
+// Permet de déclencher l'affichage des données du film lors du clic
+async function evenementFilm(API) {
+    let ensembleFilm = document.querySelectorAll(".listeFilm .choixFilm");
     for (let i = 0; i < ensembleFilm.length; i++) {
-        //Récupération de l'id
+        // Récupération de l'id
         ensembleFilm[i].addEventListener("click", async function (event) {
-            let id = event.target.id;
+            let name = event.target.name;
             // Correction d'un bug quand l'image est plus petite que le bouton
-            if (id==""){
-                id = event.target.parentElement.id;
+            if (name==""){
+                name = event.target.parentElement.name;
             }
 
-            //Requete auprès de l'API
-            let infoFilm = await fetch(api+'/titles/'+id);
+            // Requete auprès de l'API
+            let infoFilm = await fetch(API+'/titles/'+name);
             infoFilm = await infoFilm.json()
-        
-            //Affichage du résultat
+            // Affichage du résultat
             evenementModalFilm(infoFilm)
         })
     };
          
 }
 
-// Declenche l'évènement lors du clic que la fleche
+
+// Declenche l'évènement lors du clic sur la fleche
 function evenementFleche(nbrFilmAffiche){
-    const ensemblefleche = document.querySelectorAll(".fleche")
+    let ensemblefleche = document.querySelectorAll(".fleche")
     for (let i = 0; i < ensemblefleche.length; i++){
         ensemblefleche[i].addEventListener("click", function(){
             // Defini le sens de la fleche cliquée
@@ -42,9 +44,10 @@ function evenementFleche(nbrFilmAffiche){
     }
 }
 
-// Boucle pour changer l'affichage des films (flechedroite)
+
+// Boucle pour changer l'affichage des films (flechedroite ou flechegauche)
 function affichageFilm(classeActuel, sensFleche, nbrFilmAffiche){
-    const listeFilmActuel = document.querySelectorAll("#"+classeActuel+" .choixFilm")
+    let listeFilmActuel = document.querySelectorAll("#"+classeActuel+" .choixFilm")
     if (sensFleche == "droite"){    
         for (let i = 0; i<listeFilmActuel.length; i++){
             // Recherche le premier film avec un attribut display none 
@@ -69,6 +72,7 @@ function affichageFilm(classeActuel, sensFleche, nbrFilmAffiche){
     }
 }
 
+
 // Fonction pour récupérer la categorie contenu dans la classe d'une fleche
 function recuperationCategorie(classeEntiere){
     let classePartiel = ""
@@ -81,6 +85,7 @@ function recuperationCategorie(classeEntiere){
     }
     return classePartiel
 }
+
 
 // Fonction pour récupérer le sens de la fleche
 function recuperationSens(classeEntiere){

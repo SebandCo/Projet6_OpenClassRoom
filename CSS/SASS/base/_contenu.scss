@@ -3,11 +3,31 @@ main{
     background:$couleurfond ;
 }
 
+
 #meilleurfilm{
+    display : grid;
+    grid-template-rows : 10em 13em 10em 10em;
+    grid-template-columns : 1fr 2fr;
+    background:$couleurfilmmoment;
     h2{
-        font-size: 4em;
+        font-size: $taillemeilleurfilm;
+        align-items: center;
+        margin : 30px;
+        grid-column: 1/3;
+    }
+    section[class="informationMeilleurFilm"]{
+        grid-column : 1;
+        grid-row : 2/5;
+        margin: auto;
+        h3, p{
+            margin-bottom : 30px;
+        }
     }
 
+    .div-film-meilleurfilm{
+        grid-column : 2;
+        grid-row : 2/5;
+    }
     .choixFilm{
         margin-top: 20px;
         margin-bottom : 20px;
@@ -18,10 +38,12 @@ main{
     @include taille_film($hauteurmeilleurfilm);
 }
 
+
 #mieuxnote{
     @include affichage_film_displaygrid;
     @include taille_film;
 }
+
 
 #ensemblefilm{
     .listeFilm{
@@ -30,9 +52,9 @@ main{
     }
 }
 
+
 .fleche{
+    @include bouton;
     height : ($hauteurfleche);
-    width : 4em;
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 40px;
 }

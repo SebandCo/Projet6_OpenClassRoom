@@ -1,11 +1,13 @@
 import {recuperationCategorie} from "./requeteCategorie.js";
-import {creationFilmCategorie, creationTitreCategorie} from "./creationCategorie.js";
+import {creationFilmCategorie,
+        creationTitreCategorie} from "./creationCategorie.js";
 import {evenementCategorieGeneral} from "./evenementCategorie.js";
 
 // Evenement lors du clic sur l'image d'un film
 export function evenementModalFilm(infoFilm){
+    console.log (infoFilm)
     //Titre donné à la fenetre modal
-    const texteTitre = "Description du Film"
+    let texteTitre = "Description du Film"
     //Contenu de la fenetre
         //Variable pour contenir les différentes balises
         let balises = []
@@ -63,30 +65,32 @@ export function evenementModalFilm(infoFilm){
     activationFenetre()
 }
 
+
 // Evenement lors de la validation de la fenetre modal sur les categories
-export async function evenementModalCategorie(api, nbrFilmStock,nbrFilmAffiche){
-    //Récupération des categories de l'API
-    const categorie = await recuperationCategorie(api);
+export async function evenementModalCategorie(API, NBRFILMSTOCK,nbrFilmAffiche){
+    //Récupération des categories de l'APi
+    let categorie = await recuperationCategorie(API);
     affichageCategorie(categorie)
     //Activation de la Fenetre
     activationFenetre()
     //Evenement de lors de la validation
-    const modalValidationCategorie=document.querySelector("#validationCategorie")
+    let modalValidationCategorie=document.querySelector("#validationCategorie")
     modalValidationCategorie.addEventListener("click", function () {
         //Pour récupérer les genres séléctionnés
         let genres = []
         //Récupére tous les checkbox
-        const rechercheBouton = document.querySelectorAll("input[type=checkbox]:checked")
+        let rechercheBouton = document.querySelectorAll("input[type=checkbox]:checked")
         //Parcours la liste pour vérifier qu'elle checkbox est valide
         for (var checkbox of rechercheBouton) {  
-            genres.push(checkbox.name)
+            genres.push(checkbox.id)  
         } 
         creationTitreCategorie(genres);
-        creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
-        evenementCategorieGeneral(api, nbrFilmAffiche)
+        creationFilmCategorie(API, NBRFILMSTOCK, nbrFilmAffiche, genres)
+        evenementCategorieGeneral(API, nbrFilmAffiche)
         activationFenetre()
     })
 }
+
 
 // fonction pour créer les balises
 function creationTexte(valeur){
@@ -98,6 +102,8 @@ function creationTexte(valeur){
     let informationTransitoire = document.createElement(valeur[0]);
         if (valeur[0]=="img"){
             informationTransitoire.src = valeur[1];
+            console.log(valeur)
+            informationTransitoire.setAttribute("alt","image du film selectionnee")
         }
         else{
             informationTransitoire.innerText = valeur[1];
@@ -106,16 +112,18 @@ function creationTexte(valeur){
     return [titreTransitoire, informationTransitoire]
 }
 
+
 // fonction pour regrouper les valeurs dans un même tableau
 function insertionGlobale (tableau, valeur1, valeur2, valeur3, valeur4){
     let tableauProvisoire = [valeur1, valeur2, valeur3, valeur4 ]
     tableau.push(tableauProvisoire)
 }
 
+
 // Fonction pour l'affichage des categories
 function affichageCategorie(categorie){
     //Titre donné à la fenetre modal
-    const texteTitre = "Choix de la categorie"
+    let texteTitre = "Choix de la categorie"
     
     //Contenu de la fenetre
         //Variable pour contenir les différentes balises
@@ -125,14 +133,13 @@ function affichageCategorie(categorie){
         //Création de la balise à cocher
         var baliseACocher = document.createElement("form")
             baliseACocher.setAttribute("method","get");
-            baliseACocher.setAttribute("action","");
             baliseACocher.setAttribute("id", "liste-categorie");
 
         //Récupération des valeurs à cocher
         for (let i = 0; i<categorie.length;i++){
             var baliseinput = document.createElement("input");
                 baliseinput.setAttribute("type", "checkbox");
-                baliseinput.setAttribute("name", categorie[i].name);
+                baliseinput.setAttribute("id", categorie[i].name);
                 baliseinput.setAttribute("class", "checkbox-categorie")
             var baliselabel = document.createElement("label")
                 baliselabel.setAttribute("for",categorie[i].name)
@@ -159,21 +166,23 @@ function affichageCategorie(categorie){
 
 // Fonction pour afficher ou cacher la fenetre modal
 export function activationFenetre(){
-    const modalContainer = document.querySelector(".modal-container");
+    let modalContainer = document.querySelector(".modal-container");
     modalContainer.classList.toggle("active")
 }
 
+
 // Mise en forme du titre de la fenetre modal
 function miseEnFormeTitre (texteTitre,localisation){
-    const titresection = document.querySelector("#titremodal")
+    let titresection = document.querySelector("#titremodal")
     titresection.innerHTML = ""
     titresection.setAttribute("class", "titre-"+localisation)
     titresection.innerText = texteTitre
 }
 
+
 // Mise en forme du contenu de la fenetre modal
 function miseEnFormeParagraphe(balises, localisation){
-    const sectionFilm = document.querySelector("#contenumodal")
+    let sectionFilm = document.querySelector("#contenumodal")
     sectionFilm.innerHTML="";
     sectionFilm.setAttribute("class", "contenu-"+localisation)
     for (let i=0;i<balises.length;i++){

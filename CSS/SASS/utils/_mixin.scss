@@ -3,11 +3,13 @@
     cursor: pointer;
 }
 
+
 @mixin taille_film($hauteur:$hauteurfilm){
     img{
         height: $hauteur;
     }
 }
+
 
 @mixin centrage_texte{
     display: grid;
@@ -15,16 +17,34 @@
     justify-items: center;
 }
 
+
 @mixin bordure_modal{
     background-color: #fff;
     border: 1px solid #666;
 }
 
+
+@mixin bouton{
+    display: inline-block;
+    background-color: $couleurboutonnav;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    margin: 10px;
+    @include modification_curseur; 
+}
+
+
 @mixin affichage_film_displaygrid{
     display : grid;
-    grid-template-rows: 2em auto;
+    align-items: center;
+    grid-template-rows: 8em auto;
     grid-template-columns: 10% 80% 10%;
-    h3{
+    h4{
         grid-row: 1;
         grid-column: 1/4;
     }

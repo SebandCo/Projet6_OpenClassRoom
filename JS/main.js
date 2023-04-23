@@ -2,44 +2,44 @@ import {creationFilmCategorie,
         creationTitreCategorie,
         creationFilmMieuxNote,
         creationMeilleurFilm} from "./creationCategorie.js";
-import {recuperationCategorie} from "./requeteCategorie.js";
 import {evenementModalCategorie,
         activationFenetre} from "./gestionFenetreModal.js";
 
-const genre1 = "Action"
-const genre2 = "Romance"
-const genre3 = "Music"
-const genres = [genre1, genre2, genre3]
-const api = "http://localhost:8000/api/v1"
-const nbrFilmStock = 10
-const nbrFilmAffiche = 4
+let genre1 = "Action"
+let genre2 = "Romance"
+let genre3 = "Music"
+let genres = [genre1, genre2, genre3]
+const API = "http://localhost:8000/api/v1"
+const NBRFILMSTOCK = 10
+// Définition du nombre de film affiché suivant la taille de l'écran
+let nbrFilmAffiche = 4
+if (screen.width <= 1070){
+    nbrFilmAffiche = 3
+}
+
 
 //Mise en forme au démarrage des catégories
-creationMeilleurFilm(api)
-creationFilmMieuxNote(api, nbrFilmStock, nbrFilmAffiche)
+creationMeilleurFilm(API)
+creationFilmMieuxNote(API, NBRFILMSTOCK, nbrFilmAffiche)
 creationTitreCategorie(genres);
-creationFilmCategorie(api, nbrFilmStock, nbrFilmAffiche, genres)
+creationFilmCategorie(API, NBRFILMSTOCK, nbrFilmAffiche, genres)
 
 
-//Pour la fenetre modal
-// Récupération du container
-const modalContainer = document.querySelector(".modal-container");
-//Selection de tous les éléments modal-trigger (qui permettent de fermer la fenetre)
-// querySelectorAll crée une liste que l'on peux parcourir
-const modalTriggers = document.querySelectorAll(".modal-trigger")
+// Pour la fenetre modal
+// Selection de tous les éléments modal-trigger (qui permettent de fermer la fenetre)
+let modalTriggers = document.querySelectorAll(".modal-trigger")
+// Pour chaque déclencher sa déclenche la fonction basculeModal
+modalTriggers.forEach(trigger => trigger.addEventListener("click", basculeModal))
 
-//Pour chaque déclencher (trigger on parcours la liste) on rajoute un évenement au clique
-// a chaque click, sa déclenche la fonction toggleModal
-modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
-
-//Création de la fonction toggleModal
-async function toggleModal(){
-    //Rajoute la classe toggle "active" si elle existe sinon ca l'enleve
+// Création de la fonction basculeModal
+async function basculeModal(){
+    // Active ou desactive la fenetre lors du clique
     activationFenetre()
 }
 
+
+// Permet de déclencher le choix de categorie lors du clique sur le bouton
 const modalCategorie = document.querySelector(".choix-categorie")
     modalCategorie.addEventListener("click",function(){
-        evenementModalCategorie(api, nbrFilmStock, nbrFilmAffiche)
+        evenementModalCategorie(API, NBRFILMSTOCK, nbrFilmAffiche)
     })
-

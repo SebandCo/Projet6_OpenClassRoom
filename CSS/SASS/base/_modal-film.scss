@@ -20,14 +20,14 @@
         }
         h4[class="image-pochette"]{
                 grid-row: 1;
-            }
+        }
         img[class="image-pochette"]{
                 grid-row: 2/10;    
                 position: relative;
                 left: 50%;
                 top: 60%;
                 transform: translate(-50%, -50%);
-            }
+        }
         
     }
 }
