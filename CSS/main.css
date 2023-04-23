@@ -144,6 +144,9 @@ nav .bouton-navigation {
   grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
   row-gap: 1em;
 }
+.modal h1 {
+  padding-bottom: 30px;
+}
 .modal .checkbox-categorie:checked + .checkbox-label {
   font-weight: bold;
 }
@@ -223,9 +226,7 @@ nav .bouton-navigation {
 
 /*mise en forme du modal*/
 .modal {
-  width: auto;
-  max-width: 1000px;
-  min-width: 300px;
+  width: 1000px;
   padding: 30px;
   background: rgb(2, 135, 169);
   border-radius: 5px;
@@ -286,6 +287,11 @@ body {
   color: white;
 }
 
+h2 {
+  font-family: "Dancing Script", cursive;
+}
+
 h4 {
+  font-family: "Dancing Script", cursive;
   font-size: 2em;
 }/*# sourceMappingURL=main.css.map */

@@ -5,6 +5,9 @@
         row-gap : 1em;
     }
 
+    h1{
+        padding-bottom : 30px;
+    }
     .checkbox-categorie:checked + .checkbox-label{
         font-weight: bold;
     }

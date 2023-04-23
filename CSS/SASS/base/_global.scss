@@ -1,11 +1,14 @@
-   
-  body {
-      font-family: sans-serif;
-      background: $couleurfond;
-      color : $couleurecriture
-  }
+body {   
+  font-family: sans-serif;
+  background: $couleurfond;
+  color : $couleurecriture
+}
 
-  
-  h4{
-    font-size : $tailletitre;
-  }
+h2{
+  font-family: 'Dancing Script', cursive; 
+}
+
+h4{
+  font-family: 'Dancing Script', cursive; 
+  font-size : $tailletitre;
+}
