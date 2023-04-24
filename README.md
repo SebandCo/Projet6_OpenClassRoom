@@ -17,8 +17,10 @@ Le programme est construit en Javascript, CSS et HTML
 ## Pré-requis
 Il n'y a aucun pré-requis pour l'affichage de la page finale HTML
 
-L'API n'étant pas disponible en ligne, il faut l'installer et l'activer via le lien Github
+L'API n'étant pas disponible en ligne, il faut l'installer et l'activer via le lien Github :
+
 https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR
+
 Un fichier Readme est présent et explique le déroulement de l'installation
 
 # Paramètre de base
