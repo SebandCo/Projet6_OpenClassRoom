@@ -1,11 +1,13 @@
 import {evenementModalFilm} from "./gestionFenetreModal.js";
 import {affichageFleche} from "./creationCategorie.js";
 
+
 // Appel des autres fonction
 export async function evenementCategorieGeneral(API, nbrFilmAffiche){
     evenementFilm(API)
     evenementFleche(nbrFilmAffiche)
 }
+
 
 // Permet de déclencher l'affichage des données du film lors du clic
 async function evenementFilm(API) {

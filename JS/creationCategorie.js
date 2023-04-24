@@ -105,6 +105,7 @@ export async function creationMeilleurFilm(API){
 }
 
 
+// Fonction pour la categorie Meilleur Film
 async function informationMeilleurFilm(categorie,film){
     console.log(film)
     let infoFilm = await fetch(film);

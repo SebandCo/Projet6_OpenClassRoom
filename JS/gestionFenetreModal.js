@@ -3,6 +3,7 @@ import {creationFilmCategorie,
         creationTitreCategorie} from "./creationCategorie.js";
 import {evenementCategorieGeneral} from "./evenementCategorie.js";
 
+
 // Evenement lors du clic sur l'image d'un film
 export function evenementModalFilm(infoFilm){
     console.log (infoFilm)

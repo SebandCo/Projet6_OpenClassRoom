@@ -1,3 +1,4 @@
+// Fonction pour récupérer l'ensemble des categories
 export async function recuperationCategorie(API){
     let compteur=1
     let reponseTotalCategorie = [];
