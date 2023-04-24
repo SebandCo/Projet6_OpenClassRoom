@@ -11,7 +11,7 @@ Il comprend :
 - L'affichage des films les mieux notés
 - L'affichage des films par categorie
 
-Le programme est construit en Javascript, CSS et HTML
+Le programme est construit en Javascript, CSS (SCSS) et HTML
 
 # Installation
 ## Pré-requis
@@ -36,7 +36,7 @@ Les fonctions dynamique du site sont les suivantes :
 - Le changement de categorie parmi celle existante
 
 # Contribution
-Commençant en programmation JS, CSS et HTML, je suis preneur :
+Commençant en programmation JS, CSS, SCSS et HTML, je suis preneur :
 1. des détections de bug
 2. des suggestions d'amélioration du code
 3. des améliorations de design
